@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rent Escalation Information</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #007bff;
+      color: #fff;
+      padding: 1em;
+      text-align: center;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th,
+    td {
+      border: 3px solid #000000;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    #escalation {
+      text-align: right;
+    }
+
+    .RentTable {
+      background-color: rgb(181, 181, 181);
+      padding: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Rent Escalation Information</h1>
+  </header>
+
+  <main>
+    <h3 id="escalation">Escalation Percentage% : {{escalation_percentage}}</h3>
+    <div class="RentTable">
+      <h2>Rent Details</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Rent</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{rent}}</td>
+            <td>{{start_date}}</td>
+            <td>{{end_date}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="RentTable">
+      <h2>Updated Rent Details</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Rent</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{new_rent}}</td>
+            <td>{{new_start_date}}</td>
+            <td>{{new_end_date}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</body>
+
+</html>

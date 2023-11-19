@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent Escalation Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        #container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://bsmedia.business-standard.com/_media/bs/img/article/2023-08/31/full/1693473547-2064.jpg?im=FeatureCrop,size=(826,465)');
+            background-size: cover;
+            background-position: center;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+
+        form {
+            border: 5px solid #007bff;
+            width: 200px;
+            margin: 0 auto;
+            background-color: rgb(210, 216, 223);
+            padding: 20px;
+        }
+    </style>
+    <script>
+        function checkFields() {
+
+            var escalationPercentage = document.getElementById('escalation_percentage').value;
+
+            if (escalationPercentage === "") {
+                alert("Please enter the Rental escalation %");
+                return false;
+            }
+
+            var startDate = document.getElementById('start_date').value;
+            var startDateObject = new Date(startDate);
+            startDateObject.setFullYear(startDateObject.getFullYear() + 1);
+            var endDate = startDateObject.toISOString().slice(0, 10);
+            console.log(endDate);
+
+            var currentDate = new Date().toISOString().slice(0, 10);
+            console.log(currentDate);
+
+            if (currentDate < startDate || currentDate > endDate) {
+                alert("Tenant is not occupying the space");
+                return false;
+            }
+            document.getElementById('end_date').value = endDate;
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Rent Escalation Information</h1>
+    </header>
+    <div id="container">
+        <form action="/escalation" method="post" onsubmit="return checkFields()" style="text-align: center;">
+            <label for="rent">Enter monthly rent:</label><br>
+            <input type="number" id="rent" name="rent" required><br><br>
+
+            <label for="start_date">Enter agreement start date:</label><br>
+            <input type="date" id="start_date" name="start_date" required>
+
+            <input type="hidden" id="end_date" name="end_date"><br><br>
+
+            <label for="escalation_percentage">Rental escalation %</label><br>
+            <input type="number" id="escalation_percentage" name="escalation_percentage"><br><br>
+
+            <button type="submit" value="Rental Increment"
+                style="background-color: #007bff;color: #fff;padding: 10px 20px; text-align: center; font-size: 16px;">
+                Rental Increment</button>
+        </form>
+    </div>
+</body>
+
+</html>
